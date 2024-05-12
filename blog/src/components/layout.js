@@ -3,9 +3,9 @@ import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 import styled, { ThemeProvider } from "styled-components"
 
+import { Gray } from "./themes/Gray"
 import { Header } from "./Header"
 import "./layout.css"
-import { Gray } from "./themes/Gray"
 import { Main } from './Main'
 import { Footer } from './Footer'
 
@@ -26,28 +26,29 @@ const Layout = ({ children }) => {
     }
   `)
 
-  return (
-      <ThemeProvider theme={Gray}>
-        <Header siteTitle={data.site.siteMetadata?.title || `Title`} />
-        <Content>
-          <Main>{children}</Main>
-          <Footer
-            style={{
-              marginTop: `var(--space-5)`,
-              fontSize: `var(--font-sm)`,
-            }}
-          >
-            © {new Date().getFullYear()} &middot; Built with
-            {` `}
-            <a href="https://www.gatsbyjs.com">Gatsby</a>
-          </Footer>
-        </Content>
-      </ThemeProvider>
+return (
+  <ThemeProvider theme={Gray}>
+    <Header siteTitle={data.site.siteMetadata?.title || `Title`} />
+    <Content>
+      <Main m={20}>{children}</Main>
+      <Footer
+        style={{
+          marginTop: `var(--space-5)`,
+          fontSize: `var(--font-sm)`,
+        }}
+      >
+        
+       © {new Date().getFullYear()} &middot; Built with
+          {` `}
+          <a href="https://gatsbyjs.com">Gatsby</a>
+        </Footer>
+      </Content>
+    </ThemeProvider>
   )
 }
-
-Layout.propTypes = {
-  children: PropTypes.node.isRequired
-}
-
+  
+    Layout.propTypes = {
+      children: PropTypes.node.isRequired
+    }
+  
 export default Layout
